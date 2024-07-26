@@ -51,4 +51,8 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer Not Found!");
     }
 
+    @GetMapping("get-last-id")
+    ResponseEntity<Integer> getLastCustomerId(){
+        return ResponseEntity.ok().body(customerService.getLastCustomerId());
+    }
 }

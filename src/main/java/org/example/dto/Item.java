@@ -13,5 +13,4 @@ public class Item {
     private Double rentalPerDay;
     private Double finePerDay;
     private Integer qtyOnHand;
-    private boolean isAvailable;
 }

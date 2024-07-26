@@ -61,4 +61,13 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return false;
     }
+
+    @Override
+    public Integer getLastCustomerId(){
+        CustomerEntity topByCustomerByIdDesc = customerRepository.findTopByOrderByIdDesc();
+        if (topByCustomerByIdDesc != null){
+            return topByCustomerByIdDesc.getId();
+        }
+        return 0;
+    }
 }

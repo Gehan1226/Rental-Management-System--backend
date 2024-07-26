@@ -17,4 +17,5 @@ public class ItemEntity {
     private String name;
     private Double rentalPerDay;
     private Double finePerDay;
+    private Integer qtyOnHand;
 }
