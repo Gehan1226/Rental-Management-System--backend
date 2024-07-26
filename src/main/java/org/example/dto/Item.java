@@ -12,4 +12,6 @@ public class Item {
     private String name;
     private Double rentalPerDay;
     private Double finePerDay;
+    private Integer qtyOnHand;
+    private boolean isAvailable;
 }
