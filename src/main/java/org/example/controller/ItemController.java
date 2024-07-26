@@ -42,4 +42,14 @@ public class ItemController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item Not Found!");
     }
 
+    @DeleteMapping("/delete-by-id/{id}")
+    ResponseEntity<String> deleteItemById(@PathVariable Integer id){
+        boolean result = itemService.deleteItemById(id);
+        if (result){
+            return ResponseEntity.ok().body("Item Delete Successfully!");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item Not Found!");
+    }
+
+
 }

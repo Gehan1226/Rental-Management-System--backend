@@ -12,4 +12,6 @@ public interface ItemService {
     Item getItemById(Integer id);
 
     boolean updateItem(Item item);
+
+    boolean deleteItemById(Integer id);
 }

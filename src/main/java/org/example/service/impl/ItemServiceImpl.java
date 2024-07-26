@@ -54,4 +54,14 @@ public class ItemServiceImpl implements ItemService {
         }
         return false;
     }
+
+    @Override
+    public boolean deleteItemById(Integer id) {
+        Optional<ItemEntity> byId = itemRepository.findById(id);
+        if (byId.isPresent()){
+            itemRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }
