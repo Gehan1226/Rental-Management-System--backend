@@ -9,5 +9,7 @@ public interface CustomerService {
 
     List<Customer> getAllCustomers();
 
-    Customer getCustomerById(Long id);
+    Customer getCustomerById(Integer id);
+
+    boolean updateCustomer(Customer customer);
 }

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
     private String city;
     private String contact;

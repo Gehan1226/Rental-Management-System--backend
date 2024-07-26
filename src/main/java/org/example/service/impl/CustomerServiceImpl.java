@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +33,22 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getCustomerById(Long id) {
+    public Customer getCustomerById(Integer id) {
         return objectMapper.convertValue(customerRepository.findById(id), Customer.class);
+    }
+
+    @Override
+    public boolean updateCustomer(Customer customer) {
+        Optional<CustomerEntity> byId = customerRepository.findById(customer.getId());
+
+        if (byId.isPresent()){
+            CustomerEntity existingEntity = byId.get();
+            existingEntity.setName(customer.getName());
+            existingEntity.setCity(customer.getCity());
+            existingEntity.setContact(customer.getContact());
+            customerRepository.save(existingEntity);
+            return true;
+        }
+        return false;
     }
 }
