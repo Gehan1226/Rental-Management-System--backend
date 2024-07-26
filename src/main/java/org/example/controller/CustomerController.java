@@ -35,10 +35,19 @@ public class CustomerController {
 
     @PutMapping("/update")
     ResponseEntity<String> updateCustomer(@RequestBody Customer customer){
-        System.out.println(customer.getId());
         boolean result = customerService.updateCustomer(customer);
         if (result){
             return ResponseEntity.ok().body("Customer Update Successfully!");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer Not Found!");
+    }
+
+    @DeleteMapping("/delete-by-id/{id}")
+    ResponseEntity<String> deleteCustomerById(@PathVariable Integer id){
+        boolean result = customerService.deleteCustomerById(id);
+
+        if (result){
+            return ResponseEntity.ok().body("Customer Delete Successfully!");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer Not Found!");
     }

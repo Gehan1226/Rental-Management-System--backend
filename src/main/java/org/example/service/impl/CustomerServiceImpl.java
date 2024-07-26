@@ -51,4 +51,14 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return false;
     }
+
+    @Override
+    public boolean deleteCustomerById(Integer id) {
+        Optional<CustomerEntity> byId = customerRepository.findById(id);
+        if (byId.isPresent()){
+            customerRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

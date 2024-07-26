@@ -12,4 +12,6 @@ public interface CustomerService {
     Customer getCustomerById(Integer id);
 
     boolean updateCustomer(Customer customer);
+
+    boolean deleteCustomerById(Integer id);
 }
