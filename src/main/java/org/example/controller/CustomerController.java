@@ -45,7 +45,6 @@ public class CustomerController {
     @DeleteMapping("/delete-by-id/{id}")
     ResponseEntity<String> deleteCustomerById(@PathVariable Integer id){
         boolean result = customerService.deleteCustomerById(id);
-
         if (result){
             return ResponseEntity.ok().body("Customer Delete Successfully!");
         }
