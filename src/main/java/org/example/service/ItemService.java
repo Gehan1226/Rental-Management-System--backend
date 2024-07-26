@@ -10,4 +10,6 @@ public interface ItemService {
     List<Item> getAllItems();
 
     Item getItemById(Integer id);
+
+    boolean updateItem(Item item);
 }

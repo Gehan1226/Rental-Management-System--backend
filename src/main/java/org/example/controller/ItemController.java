@@ -1,9 +1,9 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.dto.Customer;
 import org.example.dto.Item;
 import org.example.service.ItemService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +18,7 @@ public class ItemController {
     private final ItemService itemService;
 
     @PostMapping("/save")
-    ResponseEntity<String> saveCustomer(@RequestBody Item item){
+    ResponseEntity<String> saveItem(@RequestBody Item item){
         itemService.saveItem(item);
         return ResponseEntity.ok().body("Item Saved!");
     }
@@ -31,6 +31,15 @@ public class ItemController {
     @GetMapping("/get-by-id/{id}")
     ResponseEntity<Item> getItemById(@PathVariable Integer id){
         return ResponseEntity.ok().body(itemService.getItemById(id));
+    }
+
+    @PutMapping("/update")
+    ResponseEntity<String> updateItem(@RequestBody Item item){
+        boolean result = itemService.updateItem(item);
+        if (result){
+            return ResponseEntity.ok().body("Item Update Successfully!");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item Not Found!");
     }
 
 }
