@@ -8,4 +8,6 @@ public interface ItemService {
     void saveItem(Item item);
 
     List<Item> getAllItems();
+
+    Item getItemById(Integer id);
 }

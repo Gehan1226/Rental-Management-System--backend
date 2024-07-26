@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.example.dto.Customer;
 import org.example.dto.Item;
 import org.example.entity.ItemEntity;
 import org.example.repository.ItemRepository;
@@ -30,5 +31,10 @@ public class ItemServiceImpl implements ItemService {
 
         all.forEach(itemEntity -> itemList.add(objectMapper.convertValue(itemEntity, Item.class)));
         return itemList;
+    }
+
+    @Override
+    public Item getItemById(Integer id) {
+        return objectMapper.convertValue(itemRepository.findById(id), Item.class);
     }
 }

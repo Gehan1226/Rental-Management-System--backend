@@ -28,4 +28,9 @@ public class ItemController {
         return  ResponseEntity.ok().body(itemService.getAllItems());
     }
 
+    @GetMapping("/get-by-id/{id}")
+    ResponseEntity<Item> getItemById(@PathVariable Integer id){
+        return ResponseEntity.ok().body(itemService.getItemById(id));
+    }
+
 }
