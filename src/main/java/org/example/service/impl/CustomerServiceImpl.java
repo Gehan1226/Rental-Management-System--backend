@@ -27,9 +27,12 @@ public class CustomerServiceImpl implements CustomerService {
         List<Customer> customerList = new ArrayList<>();
         Iterable<CustomerEntity> all = customerRepository.findAll();
 
-        all.forEach(customerEntity -> {
-            customerList.add(objectMapper.convertValue(customerEntity, Customer.class));
-        });
+        all.forEach(customerEntity -> customerList.add(objectMapper.convertValue(customerEntity, Customer.class)));
         return customerList;
+    }
+
+    @Override
+    public Customer getCustomerById(Long id) {
+        return objectMapper.convertValue(customerRepository.findById(id), Customer.class);
     }
 }

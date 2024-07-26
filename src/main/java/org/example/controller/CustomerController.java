@@ -24,8 +24,12 @@ public class CustomerController {
 
     @GetMapping("/get-all")
     ResponseEntity<List<Customer>> getAllCustomers(){
-        List<Customer> allCustomers = customerService.getAllCustomers();
-        return  ResponseEntity.ok().body(allCustomers);
+        return  ResponseEntity.ok().body(customerService.getAllCustomers());
+    }
+
+    @GetMapping("/get-by-id")
+    ResponseEntity<Customer> getCustomerById(@PathVariable Long id){
+        return ResponseEntity.ok().body(customerService.getCustomerById(id));
     }
 
 }
