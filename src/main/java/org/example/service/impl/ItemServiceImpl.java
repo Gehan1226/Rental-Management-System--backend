@@ -2,14 +2,11 @@ package org.example.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.example.dto.Customer;
 import org.example.dto.Item;
-import org.example.entity.CustomerEntity;
 import org.example.entity.ItemEntity;
 import org.example.repository.ItemRepository;
 import org.example.service.ItemService;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

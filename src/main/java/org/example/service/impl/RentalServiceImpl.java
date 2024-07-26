@@ -2,14 +2,14 @@ package org.example.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.example.dto.Item;
 import org.example.dto.Rental;
-import org.example.entity.ItemEntity;
 import org.example.entity.RentalEntity;
 import org.example.repository.RentalRepository;
 import org.example.service.RentalService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,6 +27,15 @@ public class RentalServiceImpl implements RentalService {
     @Override
     public Rental getRentalById(Integer id) {
         return objectMapper.convertValue(rentalRepository.findById(id), Rental.class);
+    }
+
+    @Override
+    public List<Rental> getAllRentals() {
+        List<Rental> rentalList = new ArrayList<>();
+        Iterable<RentalEntity> all = rentalRepository.findAll();
+
+        all.forEach(rentalEntity -> rentalList.add(objectMapper.convertValue(rentalEntity, Rental.class)));
+        return rentalList;
     }
 
     @Override
